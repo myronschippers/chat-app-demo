@@ -1,8 +1,12 @@
 
 const express = require('express');
+const SocketIO = require('socket.io');
+const http = require('http');
 require('dotenv').config();
 
 const app = express();
+const httpServer = http.createServer(app);
+const io = SocketIO(httpServer);
 const bodyParser = require('body-parser');
 const sessionMiddleware = require('./modules/session-middleware');
 
@@ -32,6 +36,6 @@ app.use(express.static('build'));
 const PORT = process.env.PORT || 5000;
 
 /** Listen * */
-app.listen(PORT, () => {
+httpServer.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
 });
