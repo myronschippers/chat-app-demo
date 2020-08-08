@@ -122,3 +122,5 @@ Customize this ReadMe and the code comments in this project to read less like a 
 - [Tutorial, Scale Grid](https://scalegrid.io/blog/using-redis-with-node-js-and-socket-io/)
 - [Socket.io](https://socket.io/)
 - [Redis.io](https://redis.io/)
+- [Socket.io Client](https://www.npmjs.com/package/socket.io-client)
+- [Tutorial, Socket.io with Node and React](https://itnext.io/building-a-node-js-websocket-chat-app-with-socket-io-and-react-473a0686d1e1)
