@@ -39,7 +39,10 @@ const PORT = process.env.PORT || 5000;
 // IO CONNECTION
 // ------------------------------
 io.on('connection', (socket) => {
-  console.log('a user connected', socket);
+  console.log('a user connected');
+  socket.on('message', (data) => {
+    console.log('Socket Message:', data);
+  });
 });
 
 /** Listen * */

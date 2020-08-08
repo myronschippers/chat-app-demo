@@ -1,4 +1,5 @@
 import React, { Component } from 'react';
+import io from 'socket.io-client';
 import styles from './ChatWindow.module.css';
 
 // MATERIAL-UI
@@ -12,6 +13,8 @@ import {
   Chip,
   Grid,
 } from '@material-ui/core';
+
+const socket = io.connect('http://localhost:3000');
 
 class ChatWindow extends Component {
   state = {
@@ -28,6 +31,12 @@ class ChatWindow extends Component {
     event.preventDefault();
     // submit new message to the server
     console.log('Send Message');
+
+    // testing socket connection
+    socket.emit('message', null, (testArg) => {
+      console.log('Emit message:', testArg);
+    });
+
     this.setState({
       typedMsg: '', // clear message input
     });
