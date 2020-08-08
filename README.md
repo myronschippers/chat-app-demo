@@ -113,3 +113,12 @@ This code is also heavily commented. We recommend reading through the comments, 
 ## Update Documentation
 
 Customize this ReadMe and the code comments in this project to read less like a starter repo and more like a project. Here is an example: https://gist.github.com/PurpleBooth/109311bb0361f32d87a2
+
+## References for Chat App
+
+- [Tutorial, Chat Room](https://manifold.co/blog/building-a-chat-room-in-30-minutes-using-redis-socket-io-and-express-9e8e5a578675)
+- [Tutorial, Real-Time Chat App](https://dzone.com/articles/using-redis-with-nodejs-and-socketio)
+- [Tutorial, Simple Chat App](https://garydengblog.wordpress.com/2013/06/28/simple-chat-application-using-redis-socket-io-and-node-js/)
+- [Tutorial, Scale Grid](https://scalegrid.io/blog/using-redis-with-node-js-and-socket-io/)
+- [Socket.io](https://socket.io/)
+- [Redis.io](https://redis.io/)
