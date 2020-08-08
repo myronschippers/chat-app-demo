@@ -33,9 +33,14 @@ class ChatWindow extends Component {
     console.log('Send Message');
 
     // testing socket connection
-    socket.emit('message', null, (testArg) => {
-      console.log('Emit message:', testArg);
-    });
+    socket.emit('message',
+      {
+        message: this.state.typedMsg
+      },
+      (testArg) => {
+        console.log('Emit message:', testArg);
+      }
+    );
 
     this.setState({
       typedMsg: '', // clear message input
