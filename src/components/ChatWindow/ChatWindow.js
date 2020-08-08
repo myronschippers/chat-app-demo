@@ -1,6 +1,8 @@
 import React, { Component } from 'react';
 import io from 'socket.io-client';
 import styles from './ChatWindow.module.css';
+import { connect } from 'react-redux';
+import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // MATERIAL-UI
 import {
@@ -35,6 +37,7 @@ class ChatWindow extends Component {
     // testing socket connection
     socket.emit('message',
       {
+        user: this.props.store.user,
         message: this.state.typedMsg
       },
       (testArg) => {
@@ -105,4 +108,4 @@ class ChatWindow extends Component {
   }
 }
 
-export default ChatWindow;
+export default connect(mapStoreToProps)(ChatWindow);
