@@ -35,6 +35,13 @@ app.use(express.static('build'));
 // App Set //
 const PORT = process.env.PORT || 5000;
 
+//
+// IO CONNECTION
+// ------------------------------
+io.on('connection', (socket) => {
+  console.log('a user connected', socket);
+});
+
 /** Listen * */
 httpServer.listen(PORT, () => {
   console.log(`Listening on port: ${PORT}`);
