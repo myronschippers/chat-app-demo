@@ -3,6 +3,14 @@ body {
   margin: 0px;
 }
 
+/*
+pink/red - #ff1577
+purple - #fb0fe5
+light blue - #21f1ff
+gold - #ffbe16
+dark - #131624
+*/
+
 .alert {
   box-sizing: border-box;
   padding: 15px 10px;

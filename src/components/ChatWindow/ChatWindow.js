@@ -59,7 +59,11 @@ class ChatWindow extends Component {
           className={styles['chatPanel-actions']}
           onSubmit={(event) => this.onSubmitChatter(event)}
         >
-          <Grid container spacing={2}>
+          <Grid
+            container
+            spacing={2}
+            alignItems="center"
+          >
             <Grid item xs={8}>
               <TextField
                 variant="filled"

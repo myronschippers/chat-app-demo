@@ -19,7 +19,7 @@ const Nav = (props) => {
   return (
     <div className="nav">
       <Link to="/home">
-        <h2 className="nav-title">Prime Solo Project</h2>
+        <h2 className="nav-title">Chit<span className="nav-title-sep">Chat</span></h2>
       </Link>
       <div className="nav-right">
         <Link className="nav-link" to={loginLinkData.path}>
