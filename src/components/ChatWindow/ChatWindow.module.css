@@ -20,16 +20,16 @@
   box-sizing: border-box;
   padding: 15px 8px;
   background-color: #d1dfe9;
+  position: relative;
 }
 
 .chatPanel-actions:before {
   content: " ";
   display: block;
-  width: 60%;
   height: 0;
-  border-bottom: 2px solid #363b3f;
+  border-bottom: 1px solid #363b3f;
   position: absolute;
   top: 0;
-  left: 50%;
-  transform: translate(-50%, 0);
+  left: 8px;
+  right: 8px;
 }

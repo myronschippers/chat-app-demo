@@ -62,7 +62,7 @@ class ChatWindow extends Component {
           <Grid container spacing={2}>
             <Grid item xs={8}>
               <TextField
-                variant="outlined"
+                variant="filled"
                 fullWidth
                 label="Message"
                 value={this.state.typedMsg}
@@ -75,6 +75,7 @@ class ChatWindow extends Component {
                 type="submit"
                 color="primary"
                 fullWidth
+                size="large"
               >
                 SEND
               </Button>
