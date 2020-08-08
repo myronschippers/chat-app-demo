@@ -1,7 +1,7 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
-import mapStoreToProps from '../../redux/mapStoreToProps';
+import LogOutButton from '../../LogOutButton/LogOutButton';
+import mapStoreToProps from '../../../redux/mapStoreToProps';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
