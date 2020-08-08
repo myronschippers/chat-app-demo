@@ -1,0 +1,35 @@
+.chatPanel {
+  box-sizing: border-box;
+  max-width: 100%;
+  width: 600px;
+  background-color: #70838f;
+  box-shadow: 0 2px 3px rgb(0,0,0,0.5);
+}
+
+.chatPanel-window {
+  box-sizing: border-box;
+  width: 100%;
+  padding: 10px;
+  border: 1px solid #d1dfe9;
+  border-width: 8px 8px 10px;
+  background-color: #fefefe;
+  box-shadow: inset 0 2px 4px rgb(0,0,0,0.6);
+}
+
+.chatPanel-actions {
+  box-sizing: border-box;
+  padding: 15px 8px;
+  background-color: #d1dfe9;
+}
+
+.chatPanel-actions:before {
+  content: " ";
+  display: block;
+  width: 60%;
+  height: 0;
+  border-bottom: 2px solid #363b3f;
+  position: absolute;
+  top: 0;
+  left: 50%;
+  transform: translate(-50%, 0);
+}

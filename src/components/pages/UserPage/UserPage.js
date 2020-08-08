@@ -6,6 +6,9 @@ import mapStoreToProps from '../../../redux/mapStoreToProps';
 // MATERIAL-UI
 import { Container } from '@material-ui/core';
 
+// CUSTOM COMPONENTS
+import ChatWindow from '../../ChatWindow/ChatWindow';
+
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
 // and then instead of `props.user.username` you could use `user.username`
@@ -14,6 +17,7 @@ const UserPage = (props) => (
     <h1 id="welcome">
       Welcome, { props.store.user.username }!
     </h1>
+    <ChatWindow />
     <p>Your ID is: {props.store.user.id}</p>
     <LogOutButton className="log-in" />
   </Container>
