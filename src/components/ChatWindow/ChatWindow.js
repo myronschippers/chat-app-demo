@@ -16,11 +16,32 @@ import {
   Grid,
 } from '@material-ui/core';
 
-const socket = io.connect('http://localhost:3000');
+let socket = {};
 
 class ChatWindow extends Component {
   state = {
     typedMsg: '',
+  }
+
+  componentDidMount() {
+    // connect to socket.io
+    socket = io.connect('http://localhost:3000');
+    socket.emit('JOIN_CHAT', {
+      displayName: this.props.store.user.username,
+      room: `room_${this.props.store.user.id}`,
+    },
+    (joinData) => {
+      console.log('Joined Chat: ', joinData);
+    });
+  }
+
+  componentWillUnmount() {
+    // disconnect from socket.io
+    if (socket.emit) {
+      socket.emit('disconnect');
+      // closes this socket instance
+      socket.off();
+    }
   }
 
   changeMessage(event) {
