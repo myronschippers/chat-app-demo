@@ -11,6 +11,7 @@ import {
   Grid,
 } from '@material-ui/core';
 import ChatMessageList from './ChatMessageList';
+import UserPicker from './UserPicker';
 
 let socket = {};
 
@@ -77,15 +78,21 @@ class ChatWindow extends Component {
   }
 
   render() {
+    const disableChat = !this.props.store.chatWith;
+    console.log('disableChat:', disableChat);
+
     return (
       <div className={styles.chatPanel}>
         <div
           className={styles['chatPanel-window']}
         >
-          <ChatMessageList
-            messages={this.state.messages}
-            user={this.props.store.user}
-          />
+          {disableChat ?
+            <UserPicker /> :
+            <ChatMessageList
+              messages={this.state.messages}
+              user={this.props.store.user}
+            />
+          }
         </div>
 
         <form
@@ -102,6 +109,7 @@ class ChatWindow extends Component {
                 variant="filled"
                 fullWidth
                 label="Message"
+                disabled={disableChat}
                 value={this.state.typedMsg}
                 onChange={(event) => this.changeMessage(event)}
               />
@@ -113,6 +121,7 @@ class ChatWindow extends Component {
                 color="primary"
                 fullWidth
                 size="large"
+                disabled={disableChat}
               >
                 SEND
               </Button>
