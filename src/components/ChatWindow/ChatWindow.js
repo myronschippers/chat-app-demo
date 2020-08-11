@@ -8,13 +8,9 @@ import mapStoreToProps from '../../redux/mapStoreToProps';
 import {
   TextField,
   Button,
-  List,
-  ListItem,
-  ListItemText,
-  ListItemIcon,
-  Chip,
   Grid,
 } from '@material-ui/core';
+import ChatMessageList from './ChatMessageList';
 
 let socket = {};
 
@@ -86,33 +82,10 @@ class ChatWindow extends Component {
         <div
           className={styles['chatPanel-window']}
         >
-          <List component="ul" aria-label="messages">
-            {this.state.messages.length > 0 ?
-              this.state.messages.map((item, index) => {
-                return (
-                  <ListItem key={index}>
-                    {item.displayName === this.props.store.user.username ?
-                      <>
-                        <ListItemText primary={item.message} />
-                        <ListItemIcon>
-                          <Chip label={item.displayName} color="primary" />
-                        </ListItemIcon>
-                      </> :
-                      <>
-                        <ListItemIcon>
-                          <Chip label={item.displayName} />
-                        </ListItemIcon>
-                        <ListItemText primary={item.message} />
-                      </>
-                    }
-                  </ListItem>
-                );
-              }) :
-              (<ListItem>
-                <ListItemText primary="There are no messages in this thread." />
-              </ListItem>)
-            }
-          </List>
+          <ChatMessageList
+            messages={this.state.messages}
+            user={this.props.store.user}
+          />
         </div>
 
         <form
