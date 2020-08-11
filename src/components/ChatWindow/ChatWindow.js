@@ -21,6 +21,7 @@ let socket = {};
 class ChatWindow extends Component {
   state = {
     typedMsg: '',
+    messages: [],
   }
 
   componentDidMount() {
@@ -33,6 +34,13 @@ class ChatWindow extends Component {
     (joinData) => {
       console.log('Joined Chat: ', joinData);
     });
+
+    socket.on(`new_message_room_${this.props.store.user.id}`, (data) => {
+      const { messages } = data;
+      this.setState({
+          messages,
+      });
+    })
   }
 
   componentWillUnmount() {
@@ -79,18 +87,31 @@ class ChatWindow extends Component {
           className={styles['chatPanel-window']}
         >
           <List component="ul" aria-label="messages">
-            <ListItem>
-              <ListItemIcon>
-                <Chip label="trashPanda" />
-              </ListItemIcon>
-              <ListItemText primary="Some message is here" />
-            </ListItem>
-            <ListItem>
-              <ListItemText primary="Some message is here" />
-              <ListItemIcon>
-                <Chip label="newDugg" color="primary" />
-              </ListItemIcon>
-            </ListItem>
+            {this.state.messages.length > 0 ?
+              this.state.messages.map((item, index) => {
+                return (
+                  <ListItem key={index}>
+                    {item.displayName === this.props.store.user.username ?
+                      <>
+                        <ListItemText primary={item.message} />
+                        <ListItemIcon>
+                          <Chip label={item.displayName} color="primary" />
+                        </ListItemIcon>
+                      </> :
+                      <>
+                        <ListItemIcon>
+                          <Chip label={item.displayName} />
+                        </ListItemIcon>
+                        <ListItemText primary={item.message} />
+                      </>
+                    }
+                  </ListItem>
+                );
+              }) :
+              (<ListItem>
+                <ListItemText primary="There are no messages in this thread." />
+              </ListItem>)
+            }
           </List>
         </div>
 

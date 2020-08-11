@@ -65,6 +65,7 @@ io.on('connection', (socket) => {
       });
 
       callbackFn({ chats: chatRooms });
+      socket.emit(`new_message_${room}`, chatRooms[room]);
     } catch(err) {
       callbackFn({
         error: err,
@@ -102,7 +103,7 @@ io.on('connection', (socket) => {
 
   socket.on('disconnect', (data) => {
     console.log('Disconnect Socket:', data);
-  })
+  });
 });
 
 /** Listen * */
