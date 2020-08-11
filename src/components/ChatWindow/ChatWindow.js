@@ -61,8 +61,8 @@ class ChatWindow extends Component {
         user: this.props.store.user,
         message: this.state.typedMsg
       },
-      (testArg) => {
-        console.log('Emit message:', testArg);
+      (chatData) => {
+        console.log('Emit message:', chatData);
       }
     );
 
