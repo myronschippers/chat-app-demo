@@ -47,7 +47,30 @@ io.on('connection', (socket) => {
   const chatRooms = {};
 
   // watches for a specific emitted event
-  socket.on('message', (data) => {
+  socket.on('CHAT_MESSAGE', (data, callbackFn) => {
+    try {
+      const {
+        message,
+        displayName,
+        room,
+      } = data;
+
+      if (!chatRooms[room]) {
+        throw('Now active chat.');
+      }
+
+      chatRooms[room].messages.push({
+        displayName,
+        message,
+      });
+
+      callbackFn({ chats: chatRooms });
+    } catch(err) {
+      callbackFn({
+        error: err,
+        errorMsg: 'There was a problem sending your message.',
+      });
+    }
     console.log('Socket Message:', data);
   });
 

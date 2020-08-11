@@ -53,12 +53,13 @@ class ChatWindow extends Component {
   onSubmitChatter(event) {
     event.preventDefault();
     // submit new message to the server
-    console.log('Send Message');
+    console.log('Send Message', socket);
 
     // testing socket connection
-    socket.emit('message',
+    socket.emit('CHAT_MESSAGE',
       {
-        user: this.props.store.user,
+        room: `room_${this.props.store.user.id}`,
+        displayName: this.props.store.user.username,
         message: this.state.typedMsg
       },
       (chatData) => {
