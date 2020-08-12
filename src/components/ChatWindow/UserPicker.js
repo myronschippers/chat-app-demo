@@ -13,6 +13,7 @@ import CommentIcon from '@material-ui/icons/Comment';
 
 function UserPicker (props) {
   const usersList = useSelector(store => store.usersList);
+  const loggedInUser = useSelector(store => store.user);
   const dispatch = useDispatch();
 
   // component is ready
@@ -25,14 +26,16 @@ function UserPicker (props) {
   });
 
   const handleSelectUserForChat = (userData) => () => {
-    dispatch({ type: 'CHAT_WITH', payload: userData });
+    dispatch({ type: 'SET_CHAT_WITH', payload: userData });
   }
+
+  const userListNotLoggedIn = usersList.filter(item => item.id !== loggedInUser.id);
 
   return (
     <div>
       Available Users:
       <List>
-        {usersList.map((item, index) => {
+        {userListNotLoggedIn.map((item, index) => {
           return (
             <ListItem
               key={index}

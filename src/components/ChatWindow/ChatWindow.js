@@ -24,20 +24,6 @@ class ChatWindow extends Component {
   componentDidMount() {
     // connect to socket.io
     socket = io.connect('http://localhost:3000');
-    socket.emit('JOIN_CHAT', {
-      displayName: this.props.store.user.username,
-      room: `room_${this.props.store.user.id}`,
-    },
-    (joinData) => {
-      console.log('Joined Chat: ', joinData);
-    });
-
-    socket.on(`new_message_room_${this.props.store.user.id}`, (data) => {
-      const { messages } = data;
-      this.setState({
-          messages,
-      });
-    })
   }
 
   componentWillUnmount() {
@@ -78,8 +64,30 @@ class ChatWindow extends Component {
   }
 
   render() {
-    const disableChat = !this.props.store.chatWith;
+    const disableChat = !this.props.store.chatWith.id;
     console.log('disableChat:', disableChat);
+
+    if (!disableChat) {
+      const currentUser = this.props.store.user.id;
+      const chatWithUser = this.props.store.chatWith.id;
+      const roomKey = `room_${currentUser}_${chatWithUser}`;
+      const messageKey = `new_message_${roomKey}`;
+
+      socket.emit('JOIN_CHAT', {
+        displayName: this.props.store.user.username,
+        room: roomKey,
+      },
+      (joinData) => {
+        console.log('Joined Chat: ', joinData);
+      });
+
+      socket.on(`new_message_room_${messageKey}`, (data) => {
+        const { messages } = data;
+        this.setState({
+            messages,
+        });
+      });
+    }
 
     return (
       <div className={styles.chatPanel}>
