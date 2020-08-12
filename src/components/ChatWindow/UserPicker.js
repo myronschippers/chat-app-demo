@@ -19,7 +19,7 @@ function UserPicker (props) {
   useEffect(() => {
     if (usersList.length === 0) {
       dispatch({
-        type: 'GET_USERS_LIST',
+        type: 'FETCH_ALL_USERS',
       });
     }
   });

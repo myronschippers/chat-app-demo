@@ -24,8 +24,21 @@ function* fetchUser() {
   }
 }
 
+function* fetchAllUsers(action) {
+  try {
+    const response = yield axios.get('/api/user/all');
+    yield put({
+      type: 'SET_USERS_LIST',
+      payload: response.data,
+    });
+  } catch(err) {
+    console.log('Error fetching all users:', err);
+  }
+}
+
 function* userSaga() {
   yield takeLatest('FETCH_USER', fetchUser);
+  yield takeLatest('FETCH_ALL_USERS', fetchAllUsers);
 }
 
 export default userSaga;
