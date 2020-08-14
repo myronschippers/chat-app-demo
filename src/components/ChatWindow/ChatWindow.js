@@ -16,6 +16,10 @@ import UserPicker from './UserPicker';
 let socket = {};
 
 class ChatWindow extends Component {
+  isChatty =  false;
+  roomKey = null;
+  messageKey = null;
+
   state = {
     typedMsg: '',
     messages: [],
@@ -24,6 +28,42 @@ class ChatWindow extends Component {
   componentDidMount() {
     // connect to socket.io
     socket = io.connect('http://localhost:3000');
+  }
+
+  initWatchers() {
+    if (!this.props.store.user.id || !this.props.store.chatWith.id || this.isChatty) {
+      return false;
+    }
+    this.isChatty = true;
+
+    const currentUser = this.props.store.user.id;
+    const chatWithUser = this.props.store.chatWith.id;
+    // room key combines the id of the logged in user with
+    // the id of the selected user to chat with
+    // the lesser ID value will always come first to ensure consistency
+    this.roomKey = currentUser < chatWithUser ?
+      `room_${currentUser}_${chatWithUser}`
+      : `room_${chatWithUser}_${currentUser}`;
+    this.messageKey = `new_message_${this.roomKey}`;
+
+    socket.emit('JOIN_CHAT', {
+      displayName: this.props.store.user.username,
+      room: this.roomKey,
+    },
+    (joinData) => {
+      console.log('Joined Chat: ', joinData);
+    });
+
+    //
+    // SOCKET WATCHERS
+    // ------------------------------
+
+    socket.on(this.messageKey, (data) => {
+      const { messages } = data;
+      this.setState({
+          messages,
+      });
+    });
   }
 
   componentWillUnmount() {
@@ -49,7 +89,7 @@ class ChatWindow extends Component {
     // testing socket connection
     socket.emit('CHAT_MESSAGE',
       {
-        room: `room_${this.props.store.user.id}`,
+        room: this.roomKey,
         displayName: this.props.store.user.username,
         message: this.state.typedMsg
       },
@@ -64,30 +104,11 @@ class ChatWindow extends Component {
   }
 
   render() {
+    // kick off the socket watchers
+    this.initWatchers();
+
     const disableChat = !this.props.store.chatWith.id;
     console.log('disableChat:', disableChat);
-
-    if (!disableChat) {
-      const currentUser = this.props.store.user.id;
-      const chatWithUser = this.props.store.chatWith.id;
-      const roomKey = `room_${currentUser}_${chatWithUser}`;
-      const messageKey = `new_message_${roomKey}`;
-
-      socket.emit('JOIN_CHAT', {
-        displayName: this.props.store.user.username,
-        room: roomKey,
-      },
-      (joinData) => {
-        console.log('Joined Chat: ', joinData);
-      });
-
-      socket.on(`new_message_room_${messageKey}`, (data) => {
-        const { messages } = data;
-        this.setState({
-            messages,
-        });
-      });
-    }
 
     return (
       <div className={styles.chatPanel}>
