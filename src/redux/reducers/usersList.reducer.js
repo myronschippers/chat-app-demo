@@ -8,7 +8,7 @@ const testableUsers = [
     id: 2,
   },
 ]
-const usersListReducer = (state = testableUsers, action) => {
+const usersListReducer = (state = [], action) => {
   switch (action.type) {
     case 'SET_USERS_LIST':
       return action.payload;

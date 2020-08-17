@@ -42,9 +42,9 @@ const PORT = process.env.PORT || 5000;
 //
 // IO CONNECTION
 // ------------------------------
+const chatRooms = {};
 io.on('connection', (socket) => {
   console.log('a user connected');
-  const chatRooms = {};
 
   // watches for a specific emitted event
   socket.on('CHAT_MESSAGE', (data, callbackFn) => {
@@ -54,6 +54,7 @@ io.on('connection', (socket) => {
         displayName,
         room,
       } = data;
+      console.log('CHAT_MESSAGE', chatRooms)
 
       if (!chatRooms[room]) {
         throw('Now active chat.');

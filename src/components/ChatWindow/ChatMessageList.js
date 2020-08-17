@@ -1,4 +1,5 @@
 import React from 'react';
+import { useSelector } from 'react-redux';
 
 // MATERIAL-UI
 import {
@@ -11,9 +12,10 @@ import {
 
 function ChatMessageList(props) {
   const {
-    messages,
     user,
   } = props;
+  const messages = useSelector(store => store.chatMessages);
+
   return (
     <List component="ul" aria-label="messages">
       {messages.length > 0 ?

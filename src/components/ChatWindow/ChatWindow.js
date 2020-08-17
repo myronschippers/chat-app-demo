@@ -60,9 +60,7 @@ class ChatWindow extends Component {
 
     socket.on(this.messageKey, (data) => {
       const { messages } = data;
-      this.setState({
-          messages,
-      });
+      this.props.dispatch({ type: 'SET_CHAT_MESSAGES', payload: messages });
     });
   }
 
@@ -118,7 +116,6 @@ class ChatWindow extends Component {
           {disableChat ?
             <UserPicker /> :
             <ChatMessageList
-              messages={this.state.messages}
               user={this.props.store.user}
             />
           }
