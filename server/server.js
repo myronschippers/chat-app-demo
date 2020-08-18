@@ -57,7 +57,7 @@ io.on('connection', (socket) => {
       console.log('CHAT_MESSAGE', chatRooms)
 
       if (!chatRooms[room]) {
-        throw('Now active chat.');
+        throw('No active chat.');
       }
 
       chatRooms[room].messages.push({
