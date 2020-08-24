@@ -1,5 +1,9 @@
 footer {
-  padding: 20px;
+  padding: 15px 10px 20px;
   margin-top: 80px;
   text-align: center;
+  color: #ffbe16;
+  font-size: 0.8rem;
+  background-color: rgb(19, 22, 36, 0.6);
+  border-top: 1px solid #131624;
 }
