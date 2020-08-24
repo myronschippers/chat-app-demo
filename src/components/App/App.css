@@ -3,6 +3,14 @@ body {
   margin: 0px;
 }
 
+/*
+pink/red - #ff1577
+purple - #fb0fe5
+light blue - #21f1ff
+gold - #ffbe16
+dark - #131624
+*/
+
 .alert {
   box-sizing: border-box;
   padding: 15px 10px;
@@ -30,7 +38,9 @@ input {
   margin-bottom: 10px;
 }
 
-.log-in, .log-out, .register {
+.log-in,
+.log-out,
+.register {
   background-color: #00acb0;
   border: 1px solid #004c4d;
   border-width: 1px 1px 3px 1px;
@@ -38,22 +48,24 @@ input {
   color: #f8f8f8;
   min-height: 50px;
   min-width: 100px;
-  outline:0;
+  outline: 0;
   cursor: pointer;
 }
 
-.log-in:hover, .log-out:hover, .register:hover {
+.log-in:hover,
+.log-out:hover,
+.register:hover {
   background-color: #008183;
 }
 
 /* This line makes the "Register" and "Login" buttons look like links */
 .link-button {
-  background:none;
-  color:inherit;
-  border:none;
-  padding:0;
+  background: none;
+  color: inherit;
+  border: none;
+  padding: 0;
   font: inherit;
-  outline:0;
-  border-bottom:1px solid #444; 
+  outline: 0;
+  border-bottom: 1px solid #444;
   cursor: pointer;
 }
