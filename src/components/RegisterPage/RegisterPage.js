@@ -1,5 +1,5 @@
 import React, { Component } from 'react';
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // CUSTOM COMPONENTS
@@ -16,11 +16,13 @@ class RegisterPage extends Component {
       <div>
         <RegisterForm />
 
-        <center>
+        <center className="formPanel">
           <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.history.push('/login')}}
+            onClick={() => {
+              this.props.history.push('/login');
+            }}
           >
             Login
           </button>
@@ -31,4 +33,3 @@ class RegisterPage extends Component {
 }
 
 export default connect(mapStoreToProps)(RegisterPage);
-

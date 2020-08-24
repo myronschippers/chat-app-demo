@@ -9,11 +9,13 @@ class LoginPage extends Component {
       <div>
         <LoginForm />
 
-        <center>
+        <center className="formPanel">
           <button
             type="button"
             className="link-button"
-            onClick={() => {this.props.history.push('/registration')}}
+            onClick={() => {
+              this.props.history.push('/registration');
+            }}
           >
             Register
           </button>
