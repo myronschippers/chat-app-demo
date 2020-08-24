@@ -22,23 +22,20 @@ class LoginForm extends Component {
     } else {
       this.props.dispatch({ type: 'LOGIN_INPUT_ERROR' });
     }
-  } // end login
+  }; // end login
 
-  handleInputChangeFor = propertyName => (event) => {
+  handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
+  };
 
   render() {
     return (
       <form className="formPanel" onSubmit={this.login}>
         <h2>Login</h2>
         {this.props.store.errors.loginMessage && (
-          <h3
-            className="alert"
-            role="alert"
-          >
+          <h3 className="alert" role="alert">
             {this.props.store.errors.loginMessage}
           </h3>
         )}
@@ -67,12 +64,7 @@ class LoginForm extends Component {
           </label>
         </div>
         <div>
-          <input
-            className="log-in"
-            type="submit"
-            name="submit"
-            value="Log In"
-          />
+          <input className="btn" type="submit" name="submit" value="Log In" />
         </div>
       </form>
     );

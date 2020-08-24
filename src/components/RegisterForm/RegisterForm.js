@@ -18,26 +18,20 @@ class RegisterForm extends Component {
         password: this.state.password,
       },
     });
-  } // end registerUser
+  }; // end registerUser
 
-  handleInputChangeFor = propertyName => (event) => {
+  handleInputChangeFor = (propertyName) => (event) => {
     this.setState({
       [propertyName]: event.target.value,
     });
-  }
+  };
 
   render() {
     return (
-      <form
-        className="formPanel"
-        onSubmit={this.registerUser}
-      >
+      <form className="formPanel" onSubmit={this.registerUser}>
         <h2>Register User</h2>
         {this.props.errors.registrationMessage && (
-          <h3
-            className="alert"
-            role="alert"
-          >
+          <h3 className="alert" role="alert">
             {this.props.errors.registrationMessage}
           </h3>
         )}
@@ -66,12 +60,7 @@ class RegisterForm extends Component {
           </label>
         </div>
         <div>
-          <input
-            className="register"
-            type="submit"
-            name="submit"
-            value="Register"
-          />
+          <input className="btn" type="submit" name="submit" value="Register" />
         </div>
       </form>
     );

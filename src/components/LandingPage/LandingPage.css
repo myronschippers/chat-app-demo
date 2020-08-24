@@ -11,15 +11,18 @@ Button
 -------------------------------------------------------------------------------- */
 
 .btn {
-  background-color: #00acb0;
+  display: inline-block;
+  padding: 10px 15px;
+  border: 1px solid #131624;
   border-width: 1px 1px 3px 1px;
   border-radius: 4px;
-  color: #f8f8f8;
-  display: inline-block;
-  padding: 10px;
+  background-color: #fb0fe5;
+  color: #131624;
+  font-size: 1.1rem;
+  font-weight: 700;
+  text-transform: uppercase;
   outline: 0;
   cursor: pointer;
-  font-size: 1.1rem;
 }
 
 .btn_sizeMin {
@@ -37,9 +40,24 @@ Button
   width: 100%;
 }
 
+.btn_asLink {
+  padding: 0;
+  border-width: 0;
+  background-color: transparent;
+  color: #fb0fe5;
+  font-size: 1rem;
+  text-decoration: underline;
+}
+
 .btn:hover {
-  background-color: #008183;
+  background-color: #d40dc0;
   text-decoration: none;
+}
+
+.btn_asLink:hover {
+  background-color: transparent;
+  color: #d40dc0;
+  text-decoration: underline;
 }
 
 /* --------------------------------------------------------------------------------

@@ -12,7 +12,7 @@ class LoginPage extends Component {
         <center className="formPanel">
           <button
             type="button"
-            className="link-button"
+            className="btn btn_asLink"
             onClick={() => {
               this.props.history.push('/registration');
             }}
