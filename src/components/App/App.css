@@ -28,6 +28,15 @@ img {
   display: inline-block;
 }
 
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0 0 20px;
+}
+
 /* ------------------------------------------------------------
 Layout Resets
 ------------------------------------------------------------ */
@@ -60,7 +69,7 @@ PANEL
 .panel {
   box-sizing: border-box;
   max-width: 100%;
-  padding: 15px;
+  padding: 20px;
   border: 1px solid #fefefe;
   border-radius: 3px;
   background-color: rgb(255, 255, 255, 0.8);
@@ -75,7 +84,7 @@ FORM PANEL
   /* same as .panel */
   box-sizing: border-box;
   max-width: 100%;
-  padding: 15px;
+  padding: 20px;
   border: 1px solid #fefefe;
   border-radius: 3px;
   background-color: rgb(255, 255, 255, 0.8);
@@ -83,7 +92,6 @@ FORM PANEL
 
   /* adjustment for forms */
   width: 400px;
-  padding: 25px;
   margin: 0 auto 20px;
 }
 
