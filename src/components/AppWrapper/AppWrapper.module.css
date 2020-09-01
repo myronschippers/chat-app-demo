@@ -1,0 +1,18 @@
+/* ------------------------------------------------------------
+** SITE LAYOUT
+** ------------------------------------------------------------ */
+
+.site {
+  display: flex;
+  height: 100%; /* needed for IE10 */
+  min-height: 100%;
+  flex-direction: column;
+}
+
+.site-hd {
+  flex: 0 0 auto;
+}
+
+.site-bd {
+  flex: 1 0 auto;
+}

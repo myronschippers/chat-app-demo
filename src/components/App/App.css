@@ -16,7 +16,7 @@ Element Resets
 
 body {
   margin: 0px;
-  background-image: url('./images/sitting-together.jpg');
+  background-image: url('./images/web-sec.jpeg');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -45,6 +45,10 @@ html,
 body,
 #react-root {
   height: 100%;
+}
+
+#react-root {
+  background-color: rgb(0, 0, 0, 0.4);
 }
 
 /* ------------------------------------------------------------

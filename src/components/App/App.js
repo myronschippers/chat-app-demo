@@ -1,4 +1,4 @@
-import React, {Component} from 'react';
+import React, { Component } from 'react';
 import {
   HashRouter as Router,
   Route,
@@ -6,12 +6,11 @@ import {
   Switch,
 } from 'react-router-dom';
 
-import {connect} from 'react-redux';
+import { connect } from 'react-redux';
 
-import Nav from '../Nav/Nav';
-import Footer from '../Footer/Footer';
+import AppWrapper from '../AppWrapper/AppWrapper';
 
-import ProtectedRoute from '../ProtectedRoute/ProtectedRoute'
+import ProtectedRoute from '../ProtectedRoute/ProtectedRoute';
 
 import AboutPage from '../AboutPage/AboutPage';
 import UserPage from '../UserPage/UserPage';
@@ -23,21 +22,21 @@ import RegisterPage from '../RegisterPage/RegisterPage';
 import './App.css';
 
 class App extends Component {
-  componentDidMount () {
-    this.props.dispatch({type: 'FETCH_USER'})
+  componentDidMount() {
+    this.props.dispatch({ type: 'FETCH_USER' });
   }
 
   render() {
     return (
       <Router>
-        <div>
-          <Nav />
+        <AppWrapper>
           <Switch>
             {/* Visiting localhost:3000 will redirect to localhost:3000/home */}
             <Redirect exact from="/" to="/home" />
             {/* Visiting localhost:3000/about will show the about page.
             This is a route anyone can see, no login necessary */}
             <Route
+              // standard route
               exact
               path="/about"
               component={AboutPage}
@@ -47,6 +46,7 @@ class App extends Component {
             If the user is not logged in, the ProtectedRoute will show the 'Login' or 'Register' page.
             Even though it seems like they are different pages, the user is always on localhost:3000/user */}
             <ProtectedRoute
+              // @ /admin, if logged in shows UserPage else shows LoginPage
               exact
               path="/admin"
               component={UserPage}
@@ -54,6 +54,7 @@ class App extends Component {
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will see the info page instead. */}
             <ProtectedRoute
+              // @ /info, if logged in shows InfoPage else shows LoginPage
               exact
               path="/info"
               component={InfoPage}
@@ -61,31 +62,34 @@ class App extends Component {
             {/* This works the same as the other protected route, except that if the user is logged in,
             they will be redirected to the authRedirect path provided. */}
             <ProtectedRoute
+              // @ /login, if logged in redirect to /admin
               exact
               path="/login"
-              authRedirect="/admin"
               component={LoginPage}
+              authRedirect="/admin"
             />
             <ProtectedRoute
+              // @ /registration, if logged in redirect to /admin
               exact
               path="/registration"
-              authRedirect="/admin"
               component={RegisterPage}
+              authRedirect="/admin"
             />
             <ProtectedRoute
+              // @ /home, if logged in redirect to /admin
               exact
               path="/home"
-              authRedirect="/admin"
               component={LandingPage}
+              authRedirect="/admin"
             />
 
             {/* If none of the other routes matched, we will show a 404. */}
             <Route render={() => <h1>404</h1>} />
           </Switch>
-          <Footer />
-        </div>
+        </AppWrapper>
       </Router>
-  )}
+    );
+  }
 }
 
 export default connect()(App);
