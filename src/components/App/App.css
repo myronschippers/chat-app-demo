@@ -54,6 +54,14 @@ body,
   height: 100%;
 }
 
+/* --------------------------------------------------------------------------------
+Container
+-------------------------------------------------------------------------------- */
+
+.container {
+  padding: 20px;
+}
+
 /* ------------------------------------------------------------
 ALERT
 ------------------------------------------------------------ */
@@ -80,12 +88,12 @@ PANEL
   border: 1px solid #424d7a;
   border-width: 1px 0 0 1px;
   border-radius: 12px;
-  background-color: rgba(29, 34, 54, 0.9);
+  background-color: rgba(19, 22, 36, 0.78);
   box-shadow: 2px 2px 4px rgb(19, 22, 36);
 }
 
 /* ------------------------------------------------------------
-FORM PANEL
+FORM STYLING
 ------------------------------------------------------------ */
 
 .formPanel {
@@ -96,7 +104,7 @@ FORM PANEL
   border: 1px solid #424d7a;
   border-width: 1px 0 0 1px;
   border-radius: 12px;
-  background-color: rgba(29, 34, 54, 0.9);
+  background-color: rgba(19, 22, 36, 0.78);
   box-shadow: 2px 2px 4px rgb(19, 22, 36);
 
   /* adjustment for forms */
@@ -104,47 +112,64 @@ FORM PANEL
   margin: 0 auto 20px;
 }
 
-/* ------------------------------------------------------------
-FORM STYLING
------------------------------------------------------------- */
-
 input {
   margin: 5px;
   margin-bottom: 10px;
-}
-
-.log-in,
-.log-out,
-.register {
-  background-color: #00acb0;
-  border: 1px solid #004c4d;
-  border-width: 1px 1px 3px 1px;
-  border-radius: 4px;
-  color: #f8f8f8;
-  min-height: 50px;
-  min-width: 100px;
-  outline: 0;
-  cursor: pointer;
-}
-
-.log-in:hover,
-.log-out:hover,
-.register:hover {
-  background-color: #008183;
 }
 
 /* ------------------------------------------------------------
 BUTTON STYLING
 ------------------------------------------------------------ */
 
-/* This line makes the "Register" and "Login" buttons look like links */
-.link-button {
-  background: none;
-  color: inherit;
-  border: none;
-  padding: 0;
-  font: inherit;
+.btn {
+  display: inline-block;
+  padding: 10px 20px;
+  border-color: #68065e;
+  border-width: 1px 1px 3px;
+  border-radius: 4px;
+  background-color: #fb0fe5;
+  color: #131624;
+  font-size: 1.1rem;
+  font-weight: bold;
+  text-transform: uppercase;
   outline: 0;
-  border-bottom: 1px solid #444;
   cursor: pointer;
+}
+
+.btn_sizeMin {
+  min-height: 50px;
+  min-width: 100px;
+}
+
+.btn_sizeSm {
+  padding: 10px 15px;
+  font-size: 0.8rem;
+}
+
+.btn_sizeFull {
+  display: block;
+  width: 100%;
+}
+
+.btn:hover {
+  background-color: #ce0cba;
+  text-decoration: none;
+}
+
+/* This line makes the "Register" and "Login" buttons look like links */
+.btn_asLink {
+  padding: 0;
+  border-width: 0;
+  border-bottom: 1px solid #fb0fe5;
+  border-radius: 0;
+  background: none;
+  font: inherit;
+  color: #fb0fe5;
+  text-transform: none;
+}
+
+.btn_asLink:hover {
+  background-color: transparent;
+  border-color: #ce0cba;
+  color: #ce0cba;
 }
