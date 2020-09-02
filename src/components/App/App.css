@@ -16,9 +16,7 @@ Element Resets
 
 body {
   margin: 0px;
-  /* background-image: url('./images/engin-akyurt-JkMLeJLwcQg-unsplash.jpg'); */
-  /* background-image: url('./images/kevin-ku-w7ZyuGYNpRQ-unsplash.jpg'); */
-  background-image: url('./images/mcdobbie-hu-5RgShZblKAQ-unsplash.jpg');
+  background-image: url('./images/engin-akyurt-JkMLeJLwcQg-unsplash.jpg');
   background-size: cover;
   background-position: center center;
   background-attachment: fixed;
@@ -26,7 +24,8 @@ body {
 }
 
 #react-root {
-  background-color: rgb(0, 0, 0, 0.2);
+  /* meant to darken the image used in the app BG */
+  background-color: rgb(0, 0, 0, 0.4);
 }
 
 img {
