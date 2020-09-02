@@ -124,10 +124,11 @@ BUTTON STYLING
 .btn {
   display: inline-block;
   padding: 10px 20px;
-  border-color: #68065e;
-  border-width: 1px 1px 3px;
+  border: 1px solid #68065e;
   border-radius: 4px;
   background-color: #fb0fe5;
+  box-shadow: inset -2px -2px 6px rgb(251, 15, 229, 0.6),
+    inset -8px -10px 28px rgba(46, 3, 42, 0.5);
   color: #131624;
   font-size: 1.1rem;
   font-weight: bold;
