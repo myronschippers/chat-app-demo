@@ -1,13 +1,16 @@
 import React, { useState, useEffect } from 'react';
 import { useDispatch, useSelector } from 'react-redux';
+import styles from './AvailableUsers.module.css';
 
 function AvailableUsers(props) {
   const [selectedUser, setSelectedUser] = useState({});
   const dispatch = useDispatch();
   const usersList = useSelector((store) => store.usersList);
+  const user = useSelector((store) => store.user);
 
   useEffect(() => {
-    if (usersList.length === 0) {
+    const matchedUser = usersList.filter((item) => user.id === item.id);
+    if (usersList.length === 0 || matchedUser.length > 0) {
       dispatch({
         type: 'FETCH_USERS_LIST',
       });
@@ -27,10 +30,14 @@ function AvailableUsers(props) {
       {usersList.length === 0 ? (
         <p>There are no available users.</p>
       ) : (
-        <ul>
+        <ul className={styles.profList}>
           {usersList.map((item, index) => {
             return (
-              <li key={index} onClick={handleClickSelectUser(item)}>
+              <li
+                key={index}
+                className={styles['profList-item']}
+                onClick={handleClickSelectUser(item)}
+              >
                 {item.username}
               </li>
             );
