@@ -2,6 +2,7 @@ import React from 'react';
 import { connect } from 'react-redux';
 import LogOutButton from '../LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
+import AvailableUsers from '../AvailableUsers/AvailableUsers';
 
 // this could also be written with destructuring parameters as:
 // const UserPage = ({ user }) => (
@@ -11,6 +12,7 @@ const UserPage = (props) => (
     <div className="panel">
       <h1 id="welcome">Welcome, {props.store.user.username}!</h1>
       <p>Your ID is: {props.store.user.id}</p>
+      <AvailableUsers />
       <LogOutButton className="btn" />
     </div>
   </div>
