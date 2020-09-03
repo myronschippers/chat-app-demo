@@ -5,6 +5,7 @@ const {
 const encryptLib = require('../modules/encryption');
 const pool = require('../modules/pool');
 const userStrategy = require('../strategies/user.strategy');
+const { query } = require('express');
 
 const router = express.Router();
 
@@ -42,6 +43,21 @@ router.post('/logout', (req, res) => {
   // Use passport's built-in method to log out the user
   req.logout();
   res.sendStatus(200);
+});
+
+// get all users except for the currently logged in user
+router.get('/all', rejectUnauthenticated, (req, res) => {
+  const queryText = `SELECT * FROM "user" WHERE id != $1;`;
+
+  pool
+    .query(queryText, [req.user.id])
+    .then((response) => {
+      res.send(response.rows);
+    })
+    .catch((err) => {
+      console.log(err);
+      res.sendStatus(500);
+    });
 });
 
 module.exports = router;
