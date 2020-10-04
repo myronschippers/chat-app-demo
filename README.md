@@ -76,13 +76,14 @@ This code is also heavily commented. We recommend reading through the comments, 
   * App/App
   * Footer/Footer
   * Nav/Nav
+  * LogOutButton/LogOutButton
+  * ProtectedRoute/ProtectedRoute
+* src/pages
   * AboutPage/AboutPage
   * InfoPage/InfoPage
   * UserPage/UserPage
   * LoginPage/LoginPage
   * RegisterPage/RegisterPage
-  * LogOutButton/LogOutButton
-  * ProtectedRoute/ProtectedRoute
 
 ## Deployment
 

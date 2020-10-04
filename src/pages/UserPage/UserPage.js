@@ -1,6 +1,6 @@
 import React from 'react';
 import { connect } from 'react-redux';
-import LogOutButton from '../LogOutButton/LogOutButton';
+import LogOutButton from '../../components/LogOutButton/LogOutButton';
 import mapStoreToProps from '../../redux/mapStoreToProps';
 
 // this could also be written with destructuring parameters as:
